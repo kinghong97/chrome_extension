@@ -98,12 +98,11 @@ function time_check() {
             daily_todos.forEach(todo => todo.checked = false)
         }
         save_all()
-    } else {
-        let time = {}
-        time['date'] = now_date
-        time['day'] = now_day
-        localStorage.setItem('time', JSON.stringify(time))
     }
+    let time = {}
+    time['date'] = now_date
+    time['day'] = now_day
+    localStorage.setItem('time', JSON.stringify(time))
 }
 
 main.addEventListener('mouseover', () => {
