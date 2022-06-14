@@ -35,7 +35,6 @@ window.onload = () => {
     time_check()
 }
 
-
 add_btn.forEach(add => {
   add.addEventListener("click", (e) => {
     input = prompt("일정을 입력해 주세요.")
