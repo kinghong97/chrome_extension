@@ -1,9 +1,9 @@
 {
-  "name": "To Do List",
+  "name": "To Do List2",
   "description": "KingHong97 To Do List!",
   "version": "1.0",
   "manifest_version": 3,
   "chrome_url_overrides" : {
-    "newtab": "todo.html"
+    "newtab": "todo2.html"
   }
 }
