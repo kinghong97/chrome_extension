@@ -129,6 +129,10 @@ containers.forEach(container => {
       container.insertBefore(draggable, afterElement)
     }
   })
+  container.addEventListener('dragend', e => {
+    e.preventDefault()
+    save_all()
+  })
 })
 
 function getDragAfterElement(container, y) {
