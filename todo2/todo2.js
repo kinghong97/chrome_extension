@@ -2,6 +2,8 @@ const add_btn = document.querySelectorAll("#todo_container .material-icons")
 const main = document.getElementById("main_container")
 let check_input = document.querySelectorAll(".todo input")
 let close_btn = document.querySelectorAll(".todo i")
+const containers = document.querySelectorAll('.containers')
+
 const ids = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
 
 
@@ -53,3 +55,33 @@ function save_all() {
     todo_list[`todo`] = todo_status
     localStorage.setItem('todo_list', JSON.stringify(todo_list))
 }
+
+containers.forEach(container => {
+    container.addEventListener('dragover', e => {
+      e.preventDefault()
+      const afterElement = getDragAfterElement(container, e.clientY)
+      const draggable = document.querySelector('.dragging')
+      if (afterElement == null) {
+        container.appendChild(draggable)
+      } else {
+        container.insertBefore(draggable, afterElement)
+      }
+    })
+    container.addEventListener('dragend', e => {
+      e.preventDefault()
+      save_all()
+    })
+  })
+  
+  function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.todo:not(.dragging)')]
+    return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect()
+        const offset = y - box.top - box.height / 2
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element : child }
+      } else {
+        return closest
+      }
+    }, { offset: Number.NEGATIVE_INFINITY }).element
+  }
