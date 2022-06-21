@@ -3,10 +3,8 @@
   "description": "KingHong97 To Do List!",
   "version": "1.0",
   "manifest_version": 3,
-  "chrome_url_overrides" : {
+  "chrome_url_overrides": {
     "newtab": "todo.html"
   },
-  "permissions":[
-    "alarms"
-  ]
+  "permissions": ["alarms", "storage"]
 }
