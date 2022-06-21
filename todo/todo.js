@@ -147,3 +147,9 @@ function getDragAfterElement(container, y) {
     }
   }, { offset: Number.NEGATIVE_INFINITY }).element
 }
+
+chrome.alarms.create({ when:Date.now(), periodInMinutes: 1});
+
+chrome.alarms.onAlarm.addListener(() => {
+  time_check()
+})
